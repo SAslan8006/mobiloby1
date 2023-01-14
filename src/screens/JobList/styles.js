@@ -19,7 +19,8 @@ export default StyleSheet.create({
   },
   flatlist: { 
     marginTop: SIZES.base,
-  backgroundColor:COLORS.white
+  backgroundColor:COLORS.white,
+  marginBottom: SIZES.base,
  }, 
  categoryItem: {
   marginHorizontal: 10,

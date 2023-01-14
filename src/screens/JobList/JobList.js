@@ -3,7 +3,6 @@ import {View,Image, Text,FlatList, SafeAreaView,ScrollView,TouchableWithoutFeedb
 import styles from './styles';
 import Config from 'react-native-config';
 
-//useFetch kullanmak için import edilmelidir.
 import useFetch from '../../hooks/useFetch/useFetch';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
@@ -21,34 +20,19 @@ const JobList = (props) => {
     const renderContent = ({ item }) => <JobCard Jobs={item} onPress={() => handleOnPress(item)} />;
     const handleOnPress = jobs => { props.navigation.navigate('Details', jobs); };
     const handleSelectedBook = category => {
-      setContentList(app.books?.filter(books => books.category.includes(category)));
+      setContentList(data.jobs?.filter(jobs => jobs.job_start_date.includes("category")));
       setActiveNames(category);
     };
-  
+    
     return(
       <View>
-        <View style={styles.category}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <TouchableWithoutFeedback onPress={() => handleSelectedBook('')}>
-              <Text style={[styles.categoryItem, activeNames === '' && styles.active]}>All</Text>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => handleSelectedBook('Date')}>
-              <Text style={[styles.categoryItem, activeNames === 'Date' && styles.active]}>Date</Text>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => handleSelectedBook('Date 2')}>
-              <Text style={[styles.categoryItem, activeNames === 'Date 2' && styles.active]}>Date 2</Text>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={() => handleSelectedBook('Date 3')}>
-              <Text style={[styles.categoryItem, activeNames === 'Date 3' && styles.active]}>Date 3</Text>
-            </TouchableWithoutFeedback>            
-          </ScrollView>
-          </View>
         <View style={styles.flatlist}>
         <FlatList data={!!contentList.length ? contentList : data.jobs} renderItem={renderContent} ItemSeparatorComponent={
           (() => (<View style={{ borderBottomWidth: 1, borderColor: 'rgba(0,0,0,0.2)' }} />
           ))
         } />
         </View>
+
     </View>
 
     )

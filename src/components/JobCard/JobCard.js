@@ -3,6 +3,13 @@ import styles from './styles';
 import { FONTS, COLORS, SIZES, icons } from '../../constants';
 
 const JobCard = ({ Jobs, onPress }) => {
+  const jobStartDate = new Date(Jobs.job_start_date);
+  const jobEndDate = new Date(Jobs.job_end_date);
+  const today = new Date();
+  const diffStart = today - jobStartDate;
+  const diffEnd = jobEndDate - today;
+  const daysStart = Math.floor(diffStart / (1000 * 60 * 60 * 24));
+  const daysEnd = Math.floor(diffEnd / (1000 * 60 * 60 * 24));
   return (
     <View style={{ marginVertical: SIZES.base }}>
     <TouchableOpacity onPress={onPress} style={{ flex: 1, flexDirection: 'row' }}>
@@ -14,9 +21,13 @@ const JobCard = ({ Jobs, onPress }) => {
               <Text style={{ ...FONTS.h5,marginTop: 4 , color: COLORS.lightGray }}> Ankara</Text>
               <Text style={{ ...FONTS.h5, marginTop: 4 ,color: COLORS.lightGray }}> Tam Zamanlı</Text>
 
-            <View style={{ flexDirection: 'row', marginTop: 6 }}>
-            <Text style={{ ...FONTS.body4, color: COLORS.lightGray, paddingHorizontal: SIZES.base }}>{Jobs.job_start_date} -</Text>
-            <Text style={{ ...FONTS.body4, color: COLORS.lightGray}}>{Jobs.job_end_date}</Text>
+            <View style={{ flexDirection: 'column', marginTop: 6 }}>
+            {diffStart >= 0 && (<Text> {daysStart} gündür yayında.</Text>)}
+            {diffStart < 0 && diffEnd >= 0 && (<Text>{-daysStart} gün sonra yayınlanacak.</Text>)}
+            {diffStart < 0 &&diffEnd < 0 && (<Text>{-daysStart} gün önce yayından kaldırılmış.</Text>)}
+
+            <Text style={{ ...FONTS.body4, color: COLORS.lightGray, paddingHorizontal: SIZES.base }}>{Jobs.job_start_date}</Text>
+            <Text style={{ ...FONTS.body4, color: COLORS.lightGray, paddingHorizontal: SIZES.base }}>{Jobs.job_end_date}</Text>
             </View>
 
           </View>
