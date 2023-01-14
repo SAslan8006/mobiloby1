@@ -18,7 +18,7 @@ const JobList = (props) => {
     if(loading){ return <Loading />}
     if(error){ return <Error /> }
     const renderContent = ({ item }) => <JobCard Jobs={item} onPress={() => handleOnPress(item)} />;
-    const handleOnPress = jobs => { props.navigation.navigate('Details', jobs); };
+    const handleOnPress = jobs => { props.navigation.navigate('JobDetayScreen', jobs); };
     const handleSelectedBook = category => {
       setContentList(data.jobs?.filter(jobs => jobs.job_start_date.includes("category")));
       setActiveNames(category);

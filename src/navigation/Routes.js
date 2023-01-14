@@ -12,6 +12,7 @@ import IconFa from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/Home';
 import JobListScreen from '../screens/JobList';
 import JobPostScreen from '../screens/JobPost';
+import JobDetayScreen from '../screens/JobDetayScreen';
 
 
 const logo = {uri: 'https://mobiloby.com/images/logo_mobiloby.png'};
@@ -169,7 +170,20 @@ const Routes = () => {
             component={MyDrawer}
             options={{headerShown: false}}
           />
-         
+         <Stack.Screen
+          name="JobDetayScreen"
+          component={JobDetayScreen}
+          options={{
+            title: 'Job Detay',
+            headerStyle: {
+              backgroundColor: '#0070d4',
+            },
+            headerTintColor: '#ffffff',
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
         </Stack.Navigator>
       </NavigationContainer>
     );

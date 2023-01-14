@@ -22,12 +22,9 @@ const JobCard = ({ Jobs, onPress }) => {
               <Text style={{ ...FONTS.h5, marginTop: 4 ,color: COLORS.lightGray }}> Tam Zamanlı</Text>
 
             <View style={{ flexDirection: 'column', marginTop: 6 }}>
-            {diffStart >= 0 && (<Text> {daysStart} gündür yayında.</Text>)}
-            {diffStart < 0 && diffEnd >= 0 && (<Text>{-daysStart} gün sonra yayınlanacak.</Text>)}
-            {diffStart < 0 &&diffEnd < 0 && (<Text>{-daysStart} gün önce yayından kaldırılmış.</Text>)}
-
-            <Text style={{ ...FONTS.body4, color: COLORS.lightGray, paddingHorizontal: SIZES.base }}>{Jobs.job_start_date}</Text>
-            <Text style={{ ...FONTS.body4, color: COLORS.lightGray, paddingHorizontal: SIZES.base }}>{Jobs.job_end_date}</Text>
+            {daysStart > 0 && daysEnd > 0 &&  (<Text>  {daysStart}  gündür yayında.</Text>)} 
+            {daysEnd < 0 && (<Text>  {-daysEnd} gün önce yayından kaldırılmış.</Text>)}
+            {diffStart < 0 && diffEnd >= 0 && (<Text>  {-daysStart} gün sonra yayınlanacak.</Text>)}
             </View>
 
           </View>
