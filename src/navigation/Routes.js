@@ -10,6 +10,9 @@ import IconMaC from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconFa from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from '../screens/Home';
+import JobListScreen from '../screens/JobList';
+import JobPostScreen from '../screens/JobPost';
+
 
 const logo = {uri: 'https://www.opet.com.tr/assets/images/bg/logo.png'};
 
@@ -52,6 +55,66 @@ const NavigationDrawerStructure = props => {
       </Stack.Navigator>
     );
   };
+  const JobListScreenStack = ({navigation}) => {
+    return (
+      <Stack.Navigator initialRouteName="JobListScreen">
+        <Stack.Screen
+          name="JobListScreen"
+          component={JobListScreen}
+          options={{
+            title: 'Ilanlar',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                <Image
+                  style={{width: 70, height: 24, marginLeft: 10}}
+                  source={logo}
+                />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <NavigationDrawerStructure navigationProps={navigation} />
+            ),  
+            headerStyle: { backgroundColor: '#0271cd', },  
+            headerTintColor: '#fff',
+            headerTitleStyle: { alignSelf: 'center', },
+          }}
+        />
+      </Stack.Navigator>
+    );
+  };
+  const JobPostScreenStack = ({navigation}) => {
+    return (
+      <Stack.Navigator initialRouteName="JobPostScreen">
+        <Stack.Screen
+          name="JobPostScreen"
+          component={JobPostScreen}
+          options={{
+            title: 'Job Post',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                <Image
+                  style={{width: 70, height: 24, marginLeft: 10}}
+                  source={logo}
+                />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <NavigationDrawerStructure navigationProps={navigation} />
+            ),
+  
+            headerStyle: {
+              backgroundColor: '#0271cd',
+            },
+  
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              alignSelf: 'center',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    );
+  };
 
 const MyDrawer = () => {
     return (
@@ -74,7 +137,26 @@ const MyDrawer = () => {
             ),
           }}
         />
-  
+        <Drawer.Screen
+        name="JobListScreen1"
+        component={JobListScreenStack}
+        options={{
+          drawerLabel: 'Job List',
+          drawerIcon: ({focused}) => (
+            <IconMa name="campaign" size={24} color="#fff" />
+          ),
+        }}
+      />
+        <Drawer.Screen
+          name="JobPostScreen1"
+          component={JobPostScreenStack}
+          options={{
+            drawerLabel: 'Job Post',
+            drawerIcon: ({focused}) => (
+              <IconMa name="campaign" size={24} color="#fff" />
+            ),
+          }}
+        />
       </Drawer.Navigator>
     );
   };
@@ -87,6 +169,7 @@ const Routes = () => {
             component={MyDrawer}
             options={{headerShown: false}}
           />
+         
         </Stack.Navigator>
       </NavigationContainer>
     );
