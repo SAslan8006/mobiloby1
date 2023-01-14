@@ -8,12 +8,12 @@ const images = [
   {
     image:
       'https://mobiloby.com/images/mobil-cozumler-large.jpg',
-    desc: 'Title 1',
+    desc: 'Mobil Çözümler',
   },
   {
     image:
       'https://mobiloby.com/images/web-uygulamalari-eticaret-large.jpg',
-    desc: 'Title 2',
+    desc: 'Web Uygulamalar E-ticaret',
   },
 ];
 
@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) => {
             data={images}
             height={deviceHeight / 2}
             timer={5000}
-            onPress={item => alert(JSON.stringify(item))}
+            onPress={item => alert(images[item].desc)}
             contentContainerStyle={{paddingHorizontal: 0}}
             indicatorContainerStyle={{position: 'absolute', top: 0}}
             indicatorActiveColor={'#e9bc18'}
@@ -90,7 +90,7 @@ const HomeScreen = ({navigation}) => {
             borderTopColor: 'rgba(255, 255, 255, 0.2)',
             backgroundColor: '#0271cd',
             width: '100%',
-            justifyContent: 'center',
+            justifyContent: 'center', 
             padding: 10,
             justifyContent: 'space-between',
           }}>
