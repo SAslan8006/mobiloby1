@@ -96,7 +96,7 @@ const HomeScreen = ({navigation}) => {
           }}>
           <TouchableOpacity
             style={{flexDirection: 'row'}}
-            onPress={() => navigation.navigate('IlanScreen1')}>
+            onPress={() => navigation.navigate('JobListScreen1')}>
             <View style={{flex: 1}}>
               <Text style={{color: '#fff', fontSize: 18}}>İLANLAR</Text>
             </View>

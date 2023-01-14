@@ -14,7 +14,7 @@ import JobListScreen from '../screens/JobList';
 import JobPostScreen from '../screens/JobPost';
 
 
-const logo = {uri: 'https://www.opet.com.tr/assets/images/bg/logo.png'};
+const logo = {uri: 'https://mobiloby.com/images/logo_mobiloby.png'};
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -62,7 +62,7 @@ const NavigationDrawerStructure = props => {
           name="JobListScreen"
           component={JobListScreen}
           options={{
-            title: 'Ilanlar',
+            title: '        Job List',
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
                 <Image
