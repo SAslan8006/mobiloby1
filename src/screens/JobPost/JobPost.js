@@ -4,6 +4,8 @@ import DatePicker from '@react-native-community/datetimepicker';
 import usePost from '../../hooks/usePost';
 import Config from 'react-native-config';
 import axios from 'axios';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const App = () => {
   const [jobTitle, setJobTitle] = useState('');
@@ -46,21 +48,19 @@ const App = () => {
   };
 
   return (
-    <View>
-      <TextInput value={jobTitle} onChangeText={text => setJobTitle(text)} placeholder="Job Title" />
-      <TextInput value={jobOwner} onChangeText={text => setJobOwner(text)} placeholder="Job Owner" />
+    <View style={{ flex:1, backgroundColor:'#b3e5fc',borderWidth:1}}>
+      <Input value={jobTitle} onChangeText={text => setJobTitle(text)} placeholder="Job Title" />
+      <Input value={jobOwner} onChangeText={text => setJobOwner(text)} placeholder="Job Owner" />
       <TouchableOpacity onPress={onStartDatePicker}>
-        <Text>{jobStartDate.toString()}</Text>
+        <Text>   Start Date: {jobStartDate.toString()}</Text>
       </TouchableOpacity>
       {showStartDatePicker && <DatePicker value={jobStartDate} mode="datetime" display="default" onChange={onStartDateChange} />}
       <TouchableOpacity onPress={onEndDatePicker}>
-        <Text>{jobEndDate.toString()}</Text>
+        <Text>   End Date: {jobEndDate.toString()}</Text>
       </TouchableOpacity>
       {showEndDatePicker && <DatePicker value={jobEndDate} mode="datetime" display="default" onChange={onEndDateChange} />}
-      <TextInput value={jobDescription} onChangeText={text => setJobDescription(text)} placeholder="Job Description" />
-      <TouchableOpacity onPress={onSave}>
-        <Text>Save</Text>
-      </TouchableOpacity>
+      <Input value={jobDescription} onChangeText={text => setJobDescription(text)} placeholder="Job Description" />
+      <Button text="Save" onPress={onSave} />
     </View>
   );
 };
